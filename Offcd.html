@@ -7,12 +7,17 @@
 <body can-mirror>
 <h1>Offerings</h1>
 <p> This is a space to experiment and play with digital offerings to the place we all call home. </p>
-<p>Across a range of cultures, offerings are gifts that carry spiritual significance, often to those who have died, sacred features of the natural world, plants, and animals. These can be libations to honor ancestors, keepsakes that celebrate a loved one who has passed, and gifts to lands,waterways, plants and animals you are deeply connected to. If you're not sure what to give, do research on your own cultural background and common offering traditions for those who have passed, for offerings to nature, look into local traditions that are ecologically conscious and would be supportive of the local habitat.  </p>
+<p>Across a range of cultures, offerings are gifts that carry spiritual significance, often to those who have died, sacred features of the natural world, plants, and animals. These can be libations to[...]
 <p> Start off with experimenting with digital offerings with others in this space. </p>
 <h3> Offering to the Monarch Butterfly</h3>
-<p> The Monarch is a milkweed butterfly species that crisscosses North and Central America in its annual migratory pattern, they play a crucial role in the regions ecology, and is facing extensive population decline due to habitat loss, pestidesm and climate change. Celebrate the monarch butterfly by contributing to the digital offering with some of its favorite snacks, planting milkweeds and native flowers, and other habitat sustaining gifts while also removing harmful litter and pesticides. See how others have contributed! </p>
+<p> The Monarch is a milkweed butterfly species that crisscosses North and Central America in its annual migratory pattern, they play a crucial role in the regions ecology, and is facing extensive pop[...]
 
 <img src="Offerings/Monarchbackground.png" alt="Offerings rocks" width="1200" height="600">
+
+<!-- Visitor Counter & Reset Control -->
+<div id="visitorCounter" can-play></div>
+
+<!-- Draggable Offerings -->
 <img src="Offerings/dried tabacoo.png" class="offerings" alt="tabacoo" width="100" height="100" id="tab1" can-move>  
 <img src="offerings/banana.png" class="offerings" alt="banana" width="100" height="100" id="ban1" can-move> 
 <img src="offerings/sage.png" class="offerings" alt="sage" width="100" height="100" id="sag1" can-move>
@@ -20,10 +25,82 @@
 <img src="offerings/milkweed.png" class="offerings" alt="milkweed" width="100" height="100" id="mil1" can-move>
 <img src="offerings/litter.png"  alt="litter" width="100" height="100" id="lit1" can-move>
 
-
-
 <script type="module">
-  import { playhtml } from 'https://unpkg.com/playhtml';
+  import { playhtml, html } from 'https://unpkg.com/playhtml';
+
+  // Counter element tracks visitor count and manages localStorage reset
+  playhtml.register("visitorCounter", {
+    defaultData: { 
+      visitorCount: 0,
+      threshold: 6,
+      sessionId: Date.now()
+    },
+    view: ({ data, setData }) => html`
+      <div style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 10px 15px; border-radius: 5px; font-family: sans-serif; z-index: 1000;">
+        <p style="margin: 0; font-size: 14px;">Visitors in session: <strong>${data.visitorCount}/${data.threshold}</strong></p>
+        <button @click=${() => {
+          setData((draft) => {
+            draft.visitorCount += 1;
+            if (draft.visitorCount >= draft.threshold) {
+              localStorage.removeItem('playhtmlData');
+              localStorage.removeItem('offerings-positions');
+              draft.visitorCount = 0;
+              draft.sessionId = Date.now();
+              setTimeout(() => window.location.reload(), 500);
+            }
+          });
+        }} style="margin-top: 8px; padding: 6px 10px; background: #ff6b6b; border: none; color: white; border-radius: 3px; cursor: pointer; font-size: 12px;">
+          New Visitor
+        </button>
+      </div>
+    `,
+    onMount: (ctx) => {
+      const savedPositions = localStorage.getItem('offerings-positions');
+      if (savedPositions) {
+        try {
+          const positions = JSON.parse(savedPositions);
+          Object.entries(positions).forEach(([elementId, pos]) => {
+            const elem = document.getElementById(elementId);
+            if (elem) {
+              elem.style.position = 'absolute';
+              elem.style.left = pos.x + 'px';
+              elem.style.top = pos.y + 'px';
+            }
+          });
+        } catch (e) {
+          console.error('Error restoring positions:', e);
+        }
+      }
+
+      const dragElements = ['tab1', 'ban1', 'sag1', 'orange1', 'mil1', 'lit1'];
+      const handlePositionChange = () => {
+        const positions = {};
+        dragElements.forEach(id => {
+          const elem = document.getElementById(id);
+          if (elem) {
+            positions[id] = {
+              x: parseFloat(elem.style.left) || 0,
+              y: parseFloat(elem.style.top) || 0
+            };
+          }
+        });
+        localStorage.setItem('offerings-positions', JSON.stringify(positions));
+      };
+
+      const observer = new MutationObserver(handlePositionChange);
+      dragElements.forEach(id => {
+        const elem = document.getElementById(id);
+        if (elem) {
+          observer.observe(elem, { 
+            attributes: true,
+            attributeFilter: ['style']
+          });
+        }
+      });
+
+      return () => observer.disconnect();
+    }
+  });
 
   playhtml.init({
     cursors: {
@@ -31,11 +108,5 @@
     },
   });
 </script>
-
- <script type="module">
-    import { playhtml } from 'https://unpkg.com/playhtml';
-
-    playhtml.init();
-  </script>
 </body>
 </html>

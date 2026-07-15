@@ -28,6 +28,16 @@
 <script type="module">
   import { playhtml, html } from 'https://unpkg.com/playhtml';
 
+  // Default positions for offerings - modify these coordinates to set exact starting locations
+  const DEFAULT_POSITIONS = {
+    tab1: { x: 100, y: 700 },      // Dried tobacco
+    ban1: { x: 250, y: 720 },      // Banana
+    sag1: { x: 400, y: 710 },      // Sage
+    orange1: { x: 550, y: 730 },   // Orange
+    mil1: { x: 700, y: 715 },      // Milkweed
+    lit1: { x: 850, y: 725 }       // Litter
+  };
+
   // Counter element tracks visitor count and manages localStorage reset
   playhtml.register("visitorCounter", {
     defaultData: { 
@@ -42,8 +52,20 @@
           setData((draft) => {
             draft.visitorCount += 1;
             if (draft.visitorCount >= draft.threshold) {
+              // Clear playhtml data and reset offerings to default positions
               localStorage.removeItem('playhtmlData');
               localStorage.removeItem('offerings-positions');
+              
+              // Restore all offerings to default positions immediately
+              Object.entries(DEFAULT_POSITIONS).forEach(([elementId, pos]) => {
+                const elem = document.getElementById(elementId);
+                if (elem) {
+                  elem.style.position = 'absolute';
+                  elem.style.left = pos.x + 'px';
+                  elem.style.top = pos.y + 'px';
+                }
+              });
+              
               draft.visitorCount = 0;
               draft.sessionId = Date.now();
               setTimeout(() => window.location.reload(), 500);
@@ -55,22 +77,15 @@
       </div>
     `,
     onMount: (ctx) => {
-      const savedPositions = localStorage.getItem('offerings-positions');
-      if (savedPositions) {
-        try {
-          const positions = JSON.parse(savedPositions);
-          Object.entries(positions).forEach(([elementId, pos]) => {
-            const elem = document.getElementById(elementId);
-            if (elem) {
-              elem.style.position = 'absolute';
-              elem.style.left = pos.x + 'px';
-              elem.style.top = pos.y + 'px';
-            }
-          });
-        } catch (e) {
-          console.error('Error restoring positions:', e);
+      // Initialize offerings at default positions
+      Object.entries(DEFAULT_POSITIONS).forEach(([elementId, pos]) => {
+        const elem = document.getElementById(elementId);
+        if (elem) {
+          elem.style.position = 'absolute';
+          elem.style.left = pos.x + 'px';
+          elem.style.top = pos.y + 'px';
         }
-      }
+      });
 
       const dragElements = ['tab1', 'ban1', 'sag1', 'orange1', 'mil1', 'lit1'];
       const handlePositionChange = () => {
@@ -84,6 +99,7 @@
             };
           }
         });
+        // Store current positions (for visitor interaction tracking, not reset)
         localStorage.setItem('offerings-positions', JSON.stringify(positions));
       };
 

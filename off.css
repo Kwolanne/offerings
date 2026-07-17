@@ -31,3 +31,87 @@ body {
   margin: 0;
   padding: 0;
 }
+
+  #lit1 {
+    opacity: 1;
+  }
+
+  #lit1.clicked { 
+    content: url('offerings/banana.png'); width: 100px, /* swaps to the banan image when clicked */}
+
+
+
+   .litter{
+    width: 200px;
+  }
+
+  .litter.clicked {
+    content: url('offerings/wildflowers.png'); width: 400px; height: 350px, /* swaps to the banan image when clicked */
+
+  }
+  #smoke1.clicked { 
+    content: url('offerings/solar.png'); width: 200px;/* swaps to the solar panal image when clicked */
+ }
+
+ 
+    #rig1.clicked {
+        content: url('offerings/fish.png'); width: 200px; /* swaps to the fish image when clicked */    
+    }
+    
+#oil1.clicked {
+    content: url('offerings/garden.png'); width: 180px; height:120px /* swaps to the garden image when clicked */
+}
+
+
+
+
+<style>
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* Make the image responsive */
+.container #city {
+  width: 100%;
+  height: auto;
+}
+
+.container #trash1 {
+  position: absolute;
+  top: 135%;
+  left: 63%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.container #trash2 {
+  position: absolute;
+  top: 136%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.container #smoke1 {
+  position: absolute;
+  top: 80%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+
+  }
+
+.container #rig1 {
+    position: absolute;
+    top: 140%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+.container #oil1 {
+    position: absolute;
+    top: 95%;
+    left: 13%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}

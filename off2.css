@@ -37,7 +37,7 @@ body {
   }
 
   #lit1.clicked { 
-    content: url('offerings/banana.png'); width: 100px, /* swaps to the banan image when clicked */}
+    content: url('banana.png'); width: 100px, /* swaps to the banan image when clicked */}
 
 
 
@@ -46,29 +46,29 @@ body {
   }
 
   .litter.clicked {
-    content: url('offerings/wildflowers.png'); width: 300px; height: 200px, /* swaps to the banan image when clicked */
+    content: url('wildflowers.png'); width: 300px; height: 200px, /* swaps to the banan image when clicked */
 
   }
   .smoke.clicked { 
-    content: url('offerings/solar.png'); width: 200px;/* swaps to the solar panal image when clicked */
+    content: url('solar.png'); width: 200px;/* swaps to the solar panal image when clicked */
  }
 
  
   #smoke3.clicked { 
-    content: url('offerings/solar.png'); width: 100px;/* swaps to the solar panal image when clicked */
+    content: url('solar.png'); width: 100px;/* swaps to the solar panal image when clicked */
  }
 
  
     #rig1.clicked {
-        content: url('offerings/fish.png'); width: 200px; /* swaps to the fish image when clicked */    
+        content: url('fish.png'); width: 200px; /* swaps to the fish image when clicked */    
     }
     
 .oil.clicked {
-    content: url('offerings/garden.png'); width: 230px; height:120px /* swaps to the garden image when clicked */  
+    content: url('garden.png'); width: 230px; height:120px /* swaps to the garden image when clicked */  
 }
 
 #fert1.clicked {
-    content: url('offerings/comp.png'); width: 180px; height:120px /* swaps to the compost image when clicked */  
+    content: url('comp.png'); width: 180px; height:120px /* swaps to the compost image when clicked */  
 }
 
 #sol1.clicked {
@@ -76,37 +76,37 @@ body {
 }
 
 #sol1.clicked {
-    content: url('offerings/oil.png'); width: 100px; height:50px /* swaps to the oil image when clicked */  
+    content: url('oil.png'); width: 100px; height:50px /* swaps to the oil image when clicked */  
 }
 
 #buy1.clicked {
-    content: url('offerings/union.png'); width: 150px; height:150px /* swaps to the repair billboard image when clicked */ 
+    content: url('union.png'); width: 150px; height:150px /* swaps to the repair billboard image when clicked */ 
     
 }
 
 #new1.clicked {
-    content: url('offerings/repair.png'); width: 150px; height:150px /* swaps to the union billboard image when clicked */  
+    content: url('repair.png'); width: 150px; height:150px /* swaps to the union billboard image when clicked */  
 }
 
 #gard1.clicked {
-    content: url('offerings/repair.png'); width: 200px; height:200px /* swaps to the union billboard image when clicked */  
+    content: url('repair.png'); width: 200px; height:200px /* swaps to the union billboard image when clicked */  
 }
 
 #gard1.clicked {
-    content: url('offerings/repair.png'); width: 200px; height:200px /* swaps to the union billboard image when clicked */  
+    content: url('repair.png'); width: 200px; height:200px /* swaps to the union billboard image when clicked */  
 }
 
 #oil2.clicked {
-    content: url('offerings/pep.png'); width: 180px; height:100px /* swaps to the garden image when clicked */  
+    content: url('pep.png'); width: 180px; height:100px /* swaps to the garden image when clicked */  
 }
 
 #car1.clicked {
-    content: url('offerings/tree1.png'); width: 250px; height:200px /* swaps to the repair billboard image when clicked */ 
+    content: url('tree1.png'); width: 250px; height:200px /* swaps to the repair billboard image when clicked */ 
     
 }
 
 #car2.clicked {
-    content: url('offerings/bus.png'); width: 150px; height:100px /* swaps to the repair billboard image when clicked */ 
+    content: url('bus.png'); width: 150px; height:100px /* swaps to the repair billboard image when clicked */ 
     
 }
 

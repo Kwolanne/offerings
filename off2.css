@@ -72,7 +72,7 @@ body {
 }
 
 #sol1.clicked {
-    content: url('offerings/oil.png'); width: 100px; height:50px /* swaps to the oil image when clicked */  
+    content: url('oil.png'); width: 100px; height:50px /* swaps to the oil image when clicked */  
 }
 
 #sol1.clicked {

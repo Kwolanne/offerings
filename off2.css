@@ -187,7 +187,7 @@ body {
 
 .container #oil2 {
     position: absolute;
-    top: 70%;
+    top: 30%;
     left: 44%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -195,7 +195,7 @@ body {
 
 .container #buy1 {
     position: absolute;
-    top: 103%;
+    top: 50%;
     left: 16%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -203,7 +203,7 @@ body {
 
 .container #new1 {
     position: absolute;
-    top: 103%;
+    top: 50%;
     left: 65%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -211,7 +211,7 @@ body {
 
 .container #car1 {
     position: absolute;
-    top: 94%;
+    top: 85%;
     left: 45%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -219,7 +219,7 @@ body {
 
 .container #car2 {
     position: absolute;
-    top: 30%;
+    top: 85%;
     left: 30%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);

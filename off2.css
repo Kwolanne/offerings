@@ -211,7 +211,7 @@ body {
 
 .container #car1 {
     position: absolute;
-    top: 125%;
+    top: 94%;
     left: 45%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -219,7 +219,7 @@ body {
 
 .container #car2 {
     position: absolute;
-    top: 125%;
+    top: 94%;
     left: 30%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);

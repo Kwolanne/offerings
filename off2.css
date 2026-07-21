@@ -219,7 +219,7 @@ body {
 
 .container #car2 {
     position: absolute;
-    top: 94%;
+    top: 30%;
     left: 30%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
